@@ -1,16 +1,12 @@
-import Header from './Header';
-import './App.css';
-import Content from './Content';
-import Footer from './Footer';
+import Header from "./Header";
+import "./App.css";
+import Content from "./Content";
+import Footer from "./Footer";
 
 function App() {
-  
-  
   return (
-    <div className='App'>
-      <Header />
+    <div className="App">
       <Content />
-      <Footer />
     </div>
   );
 }
