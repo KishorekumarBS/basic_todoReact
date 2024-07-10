@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Content.css";
 
 export default function Content() {
-  const [tasks, setTask] = useState(["Eat Breakfast", "Bath", "Read"]);
+  const [tasks, setTask] = useState([]);
   const [newTask, setNewTask] = useState("");
   function handleInputChange(event) {
     setNewTask(event.target.value);
@@ -16,13 +16,31 @@ export default function Content() {
   }
 
   function deleteTask(index) {
-    const updatedTask = tasks.filter((element, i) => i !== index);
-    setTask(updatedTask);
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTask(updatedTasks);
   }
 
-  function moveTaskUp(index) {}
+  function moveTaskUp(index) {
+    if (index > 0) {
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index - 1]] = [
+        updatedTasks[index - 1],
+        updatedTasks[index],
+      ];
+      setTask(updatedTasks);
+    }
+  }
 
-  function moveTaskDown(index) {}
+  function moveTaskDown(index) {
+    if (index < tasks.length - 1) {
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index + 1]] = [
+        updatedTasks[index + 1],
+        updatedTasks[index],
+      ];
+      setTask(updatedTasks);
+    }
+  }
 
   return (
     <div className="to-do-list">
